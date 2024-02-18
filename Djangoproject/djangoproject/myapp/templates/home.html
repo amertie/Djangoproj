@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - Bookshop{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-uppercase mb-3">Welcome to the World of Wonder</h2>
+<p class="lead">Embark on a journey through the realms of imagination and discovery.</p>
+
+        </div>
+    </div>
+    <div class="row mt-4">
+        {% for book in featured_books %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="{{ book.cover_image.url }}" class="card-img-top" alt="{{ book.title }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ book.title }}</h5>
+                    <p class="card-text"><strong>Author:</strong> {{ book.author }}</p>
+                    <p class="card-text"><strong>Price:</strong> ${{ book.price }}</p>
+                    <a href="{% url 'books_detail' book.id %}" class="btn btn-primary" style="background-color: #ddd; color: #333;">View Details</a>
+
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
